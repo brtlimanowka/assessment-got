@@ -37,7 +37,8 @@ const CharactersItem = ({ character }) => {
       const API_URL = 'https://www.anapioficeandfire.com/api/houses/';
       return allegiances.map((allegiance) => (
         <a href={allegiance} title='Check House'>
-          {allegiance.replace(API_URL, '')}
+          {allegiance.replace(API_URL, '')}{' '}
+          <i className='fas fa-external-link-alt'></i>
         </a>
       ));
     }
