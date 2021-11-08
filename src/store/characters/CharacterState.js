@@ -28,9 +28,14 @@ const CharacterState = (props) => {
       .then((response) => {
         if (response.ok) {
           return response.json();
+        } else {
+          throw new Error(response.statusText);
         }
       })
-      .then((data) => console.log(data));
+      .then((data) => dispatch({ type: CHARACTERS_LOADED, payload: data }))
+      .catch((error) => {
+        dispatch({ type: CHARACTERS_ERROR, payload: error.message });
+      });
   };
   const startLoading = () => {
     dispatch({ type: START_LOADING });
