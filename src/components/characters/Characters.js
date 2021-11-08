@@ -24,28 +24,31 @@ const Characters = () => {
     // eslint-disable-next-line
   }, []);
 
+  const renderPagination = (
+    <div className='characters-pagination'>
+      <span>
+        <i className='fas fa-fast-backward'></i> First Page
+      </span>
+      <span>
+        <i className='fas fa-step-backward'></i>Previous Page
+      </span>
+      <span title='Display options'>
+        <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
+      </span>
+      <span>
+        Next Page
+        <i className='fas fa-step-forward'></i>
+      </span>
+      <span>
+        Last Page
+        <i className='fas fa-fast-forward'></i>
+      </span>
+    </div>
+  );
   const renderTable = (
     <Fragment>
       <h1>Characters</h1>
-      <div className='characters-pagination'>
-        <span>
-          <i className='fas fa-fast-backward'></i> First Page
-        </span>
-        <span>
-          <i className='fas fa-step-backward'></i>Previous Page
-        </span>
-        <span title='Display options'>
-          <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
-        </span>
-        <span>
-          Next Page
-          <i className='fas fa-step-forward'></i>
-        </span>
-        <span>
-          Last Page
-          <i className='fas fa-fast-forward'></i>
-        </span>
-      </div>
+      {renderPagination}
       <div className='characters-table'>
         <header>
           <span>Character</span>
@@ -79,6 +82,7 @@ const Characters = () => {
           )}
         </article>
       </div>
+      {renderPagination}
     </Fragment>
   );
 
