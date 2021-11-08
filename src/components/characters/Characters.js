@@ -24,34 +24,17 @@ const Characters = () => {
   }, []);
   const [pageSize, setPageSize] = useState(10);
 
-  const jumpToFirstPage = () => {
-    startLoading();
-    getCharacters(pagination.first, pageSize);
-  };
-  const jumpToPreviousPage = () => {
-    startLoading();
-    getCharacters(pagination.prev, pageSize);
-  };
-  const jumpToNextPage = () => {
-    startLoading();
-    getCharacters(pagination.next, pageSize);
-  };
-  const jumpToLastPage = () => {
-    startLoading();
-    getCharacters(pagination.last, pageSize);
-  };
-
   const renderPagination = pagination && (
     <div className='characters-pagination'>
       <button
         disabled={!pagination.prev}
-        onClick={jumpToFirstPage}
+        onClick={() => getCharacters(pagination.first, pageSize)}
         title='Jump to first page'>
         <i className='fas fa-fast-backward'></i>
       </button>
       <button
         disabled={!pagination.prev}
-        onClick={jumpToPreviousPage}
+        onClick={() => getCharacters(pagination.prev, pageSize)}
         title='Jump to previous page'>
         <i className='fas fa-step-backward'></i>
       </button>
@@ -60,13 +43,13 @@ const Characters = () => {
       </button>
       <button
         disabled={!pagination.next}
-        onClick={jumpToNextPage}
+        onClick={() => getCharacters(pagination.next, pageSize)}
         title='Jump to next page'>
         <i className='fas fa-step-forward'></i>
       </button>
       <button
         disabled={!pagination.next}
-        onClick={jumpToLastPage}
+        onClick={() => getCharacters(pagination.last, pageSize)}
         title='Jump to last page'>
         <i className='fas fa-fast-forward'></i>
       </button>
