@@ -23,6 +23,12 @@ const CharactersStyled = styled.div`
         font-size: 1.4rem;
       }
     }
+    div.pagination-settings {
+      position: absolute;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+    }
   }
   div.characters-table {
     width: 90%;

@@ -17,13 +17,32 @@ const Characters = () => {
     pagination,
     filtered,
   } = useContext(characterContext);
+  const [pageSize, setPageSize] = useState(10);
+  const [showSettings, setShowSettings] = useState(false);
   useEffect(() => {
     startLoading();
     getCharacters();
     // eslint-disable-next-line
   }, []);
-  const [pageSize, setPageSize] = useState(10);
+  useEffect(() => {
+    getCharacters(1, pageSize);
+    // eslint-disable-next-line
+  }, [pageSize]);
 
+  const pageSizeClickHandler = (value) => {
+    startLoading();
+    setPageSize(value);
+    setShowSettings(false);
+  };
+
+  const renderSettings = (
+    <div className='pagination-settings'>
+      <h4>Characters per page:</h4>
+      <button onClick={() => pageSizeClickHandler(10)}>10</button>
+      <button onClick={() => pageSizeClickHandler(25)}>25</button>
+      <button onClick={() => pageSizeClickHandler(50)}>50</button>
+    </div>
+  );
   const renderPagination = pagination && (
     <div className='characters-pagination'>
       <button
@@ -38,9 +57,12 @@ const Characters = () => {
         title='Jump to previous page'>
         <i className='fas fa-step-backward'></i>
       </button>
-      <button title='Display options'>
+      <button
+        title='Display options'
+        onClick={() => setShowSettings(!showSettings)}>
         <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
       </button>
+      {showSettings && renderSettings}
       <button
         disabled={!pagination.next}
         onClick={() => getCharacters(pagination.next, pageSize)}
