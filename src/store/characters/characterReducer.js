@@ -2,7 +2,7 @@ import {
   START_LOADING,
   CLEAR_ERRORS,
   CHARACTERS_LOADED,
-  LASTPAGE_SET,
+  STORE_PAGINATION,
   CHARACTERS_ERROR,
   FILTER_GENDER,
   FILTER_CULTURE,
@@ -28,10 +28,10 @@ const _ = (state, action) => {
         characters: action.payload,
         filtered: null,
       };
-    case LASTPAGE_SET:
+    case STORE_PAGINATION:
       return {
         ...state,
-        lastPage: action.payload,
+        pagination: action.payload,
       };
     case CHARACTERS_ERROR:
       return {

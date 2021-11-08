@@ -5,7 +5,7 @@ import {
   START_LOADING,
   CLEAR_ERRORS,
   CHARACTERS_LOADED,
-  LASTPAGE_SET,
+  STORE_PAGINATION,
   CHARACTERS_ERROR,
   FILTER_GENDER,
   FILTER_CULTURE,
@@ -17,7 +17,7 @@ const CharacterState = (props) => {
     isLoading: false,
     error: null,
     characters: null,
-    lastPage: null,
+    pagination: null,
     filtered: null,
   };
   const [state, dispatch] = useReducer(characterReducer, initialState);
@@ -29,14 +29,7 @@ const CharacterState = (props) => {
     fetch(`${API_URL}?page=${queryPage}&pageSize=${queryPageSize}`)
       .then((response) => {
         if (response.ok) {
-          const headerData = response.headers
-            .get('link')
-            .split(',')
-            .find((entry) => entry.includes('last'));
-          const regex = new RegExp(/\?page=\d{1,}/, 'gi');
-          const lastPage = +headerData.match(regex)[0].replace('?page=', '');
-
-          dispatch({ type: LASTPAGE_SET, payload: lastPage });
+          getPaginationData(response.headers.get('link'));
           return response.json();
         } else {
           throw new Error(response.statusText);
@@ -59,12 +52,37 @@ const CharacterState = (props) => {
   const clearErrors = () => {
     dispatch({ type: CLEAR_ERRORS });
   };
+  const getPaginationData = (responseHeader) => {
+    const dataInHeader = responseHeader.split(',');
+    const pageRegex = new RegExp(/\?page=\d{1,}/, 'gi');
+    let paginationData = {};
+
+    const prev = dataInHeader.find((entry) => entry.includes('prev'));
+    const next = dataInHeader.find((entry) => entry.includes('next'));
+    const first = dataInHeader.find((entry) => entry.includes('first'));
+    const last = dataInHeader.find((entry) => entry.includes('last'));
+
+    paginationData.prev = prev
+      ? +prev.match(pageRegex)[0].replace('?page=', '')
+      : null;
+    paginationData.next = next
+      ? +next.match(pageRegex)[0].replace('?page=', '')
+      : null;
+    paginationData.first = first
+      ? +first.match(pageRegex)[0].replace('?page=', '')
+      : null;
+    paginationData.last = last
+      ? +last.match(pageRegex)[0].replace('?page=', '')
+      : null;
+
+    dispatch({ type: STORE_PAGINATION, payload: paginationData });
+  };
 
   const contextValues = {
     isLoading: state.isLoading,
     error: state.error,
     characters: state.characters,
-    lastPage: state.lastPage,
+    pagination: state.pagination,
     filtered: state.filtered,
     getCharacters,
     filterByGender,
