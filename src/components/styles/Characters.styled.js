@@ -61,6 +61,11 @@ const CharactersStyled = styled.div`
           text-decoration: none;
           font-size: inherit;
           color: inherit;
+          i {
+            position: relative;
+            bottom: 1px;
+            margin-right: 10px;
+          }
         }
       }
     }
