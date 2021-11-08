@@ -7,7 +7,25 @@ const CharactersStyled = styled.div`
   align-items: center;
   h1 {
     font-size: 2.6rem;
+    line-height: 2.6rem;
+    margin-top: 20px;
+  }
+  div.characters-pagination {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
     margin: 20px 0;
+    span {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      i {
+        font-size: 1.4rem;
+        margin: 0 10px;
+      }
+    }
   }
   div.characters-table {
     width: 90%;
@@ -15,9 +33,17 @@ const CharactersStyled = styled.div`
       display: flex;
       justify-content: space-evenly;
       span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         flex-basis: 18%;
-        text-align: center;
         font-size: 2rem;
+        i {
+          font-size: 1.4rem;
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
     div.characters-item {
