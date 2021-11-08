@@ -9,46 +9,46 @@ const FilterGender = styled.div``;
 const FilterCulture = styled.div``;
 
 const Characters = () => {
-  const { startLoading, getCharacters, isLoading, characters, filtered } =
-    useContext(characterContext);
-  const [pagination, setPagination] = useState({
-    firstPage: 1,
-    previousPage: 1,
-    currentPage: 1,
-    nextPage: 2,
-    lastPage: 2,
-  });
+  const {
+    startLoading,
+    getCharacters,
+    isLoading,
+    characters,
+    pagination,
+    filtered,
+  } = useContext(characterContext);
   useEffect(() => {
     startLoading();
     getCharacters();
     // eslint-disable-next-line
   }, []);
+  const [pageSize, setPageSize] = useState(10);
 
-  const renderPagination = (
+  const renderPagination = pagination && (
     <div className='characters-pagination'>
-      <span>
+      <button disabled={!pagination.prev}>
         <i className='fas fa-fast-backward'></i> First Page
-      </span>
-      <span>
+      </button>
+      <button disabled={!pagination.prev}>
         <i className='fas fa-step-backward'></i>Previous Page
-      </span>
-      <span title='Display options'>
+      </button>
+      <button title='Display options'>
         <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
-      </span>
-      <span>
+      </button>
+      <button disabled={!pagination.next}>
         Next Page
         <i className='fas fa-step-forward'></i>
-      </span>
-      <span>
+      </button>
+      <button disabled={!pagination.next}>
         Last Page
         <i className='fas fa-fast-forward'></i>
-      </span>
+      </button>
     </div>
   );
   const renderTable = (
     <Fragment>
       <h1>Characters</h1>
-      {renderPagination}
+      {!isLoading && renderPagination}
       <div className='characters-table'>
         <header>
           <span>Character</span>
@@ -82,7 +82,7 @@ const Characters = () => {
           )}
         </article>
       </div>
-      {renderPagination}
+      {!isLoading && pageSize > 10 && renderPagination}
     </Fragment>
   );
 

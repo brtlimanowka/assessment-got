@@ -15,7 +15,7 @@ const CharactersStyled = styled.div`
     display: flex;
     justify-content: space-evenly;
     margin: 20px 0;
-    span {
+    button {
       cursor: pointer;
       display: flex;
       align-items: center;
