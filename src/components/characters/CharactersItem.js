@@ -33,7 +33,13 @@ const CharactersItem = ({ character }) => {
   const columnCulture = character.culture ? character.culture : 'Unknown';
   const columnAllegiances = () => {
     const { allegiances } = character;
-    console.log(allegiances);
+    if (allegiances.length) {
+      const API_URL = 'https://www.anapioficeandfire.com/api/houses/';
+      return allegiances
+        .map((allegiance) => allegiance.replace(API_URL, ''))
+        .join(', ');
+    }
+    return 'No allegiances';
   };
 
   return (
