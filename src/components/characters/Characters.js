@@ -43,21 +43,31 @@ const Characters = () => {
 
   const renderPagination = pagination && (
     <div className='characters-pagination'>
-      <button disabled={!pagination.prev} onClick={jumpToFirstPage}>
-        <i className='fas fa-fast-backward'></i> First Page
+      <button
+        disabled={!pagination.prev}
+        onClick={jumpToFirstPage}
+        title='Jump to first page'>
+        <i className='fas fa-fast-backward'></i>
       </button>
-      <button disabled={!pagination.prev} onClick={jumpToPreviousPage}>
-        <i className='fas fa-step-backward'></i>Previous Page
+      <button
+        disabled={!pagination.prev}
+        onClick={jumpToPreviousPage}
+        title='Jump to previous page'>
+        <i className='fas fa-step-backward'></i>
       </button>
       <button title='Display options'>
         <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
       </button>
-      <button disabled={!pagination.next} onClick={jumpToNextPage}>
-        Next Page
+      <button
+        disabled={!pagination.next}
+        onClick={jumpToNextPage}
+        title='Jump to next page'>
         <i className='fas fa-step-forward'></i>
       </button>
-      <button disabled={!pagination.next} onClick={jumpToLastPage}>
-        Last Page
+      <button
+        disabled={!pagination.next}
+        onClick={jumpToLastPage}
+        title='Jump to last page'>
         <i className='fas fa-fast-forward'></i>
       </button>
     </div>
@@ -72,7 +82,6 @@ const Characters = () => {
           <span>Alive</span>
           <span>
             Gender
-            <i className='fas fa-filter' title='Filter'></i>
             <FilterGender>
               <select defaultValue='Any'>
                 <option value='Any'>Any</option>
@@ -82,7 +91,7 @@ const Characters = () => {
             </FilterGender>
           </span>
           <span>
-            Culture<i className='fas fa-filter' title='Filter'></i>
+            Culture
             <FilterCulture>
               <input type='text' />
             </FilterCulture>

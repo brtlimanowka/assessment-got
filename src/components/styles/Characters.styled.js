@@ -16,14 +16,11 @@ const CharactersStyled = styled.div`
     justify-content: space-evenly;
     margin: 20px 0;
     button {
+      flex-basis: 15%;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      font-size: 1.6rem;
-      line-height: 1.6rem;
       i {
+        margin-top: 1px;
         font-size: 1.4rem;
-        margin: 0 10px;
       }
     }
   }
@@ -38,12 +35,6 @@ const CharactersStyled = styled.div`
         justify-content: space-between;
         flex-basis: 18%;
         font-size: 2rem;
-        i {
-          font-size: 1.4rem;
-          &:hover {
-            cursor: pointer;
-          }
-        }
       }
     }
     div.characters-item {
