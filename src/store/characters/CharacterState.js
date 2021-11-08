@@ -37,6 +37,12 @@ const CharacterState = (props) => {
         dispatch({ type: CHARACTERS_ERROR, payload: error.message });
       });
   };
+  const filterByGender = (gender) => {
+    dispatch({ type: FILTER_GENDER, payload: gender });
+  };
+  const filterByCulture = (culture) => {
+    dispatch({ type: FILTER_CULTURE, payload: culture });
+  };
   const startLoading = () => {
     dispatch({ type: START_LOADING });
   };
@@ -50,6 +56,8 @@ const CharacterState = (props) => {
     characters: state.characters,
     filtered: state.filtered,
     getCharacters,
+    filterByGender,
+    filterByCulture,
     startLoading,
     clearErrors,
   };
