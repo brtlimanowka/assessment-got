@@ -24,22 +24,39 @@ const Characters = () => {
   }, []);
   const [pageSize, setPageSize] = useState(10);
 
+  const jumpToFirstPage = () => {
+    startLoading();
+    getCharacters(pagination.first, pageSize);
+  };
+  const jumpToPreviousPage = () => {
+    startLoading();
+    getCharacters(pagination.prev, pageSize);
+  };
+  const jumpToNextPage = () => {
+    startLoading();
+    getCharacters(pagination.next, pageSize);
+  };
+  const jumpToLastPage = () => {
+    startLoading();
+    getCharacters(pagination.last, pageSize);
+  };
+
   const renderPagination = pagination && (
     <div className='characters-pagination'>
-      <button disabled={!pagination.prev}>
+      <button disabled={!pagination.prev} onClick={jumpToFirstPage}>
         <i className='fas fa-fast-backward'></i> First Page
       </button>
-      <button disabled={!pagination.prev}>
+      <button disabled={!pagination.prev} onClick={jumpToPreviousPage}>
         <i className='fas fa-step-backward'></i>Previous Page
       </button>
       <button title='Display options'>
         <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
       </button>
-      <button disabled={!pagination.next}>
+      <button disabled={!pagination.next} onClick={jumpToNextPage}>
         Next Page
         <i className='fas fa-step-forward'></i>
       </button>
-      <button disabled={!pagination.next}>
+      <button disabled={!pagination.next} onClick={jumpToLastPage}>
         Last Page
         <i className='fas fa-fast-forward'></i>
       </button>
