@@ -5,6 +5,7 @@ import {
   START_LOADING,
   CLEAR_ERRORS,
   CHARACTERS_LOADED,
+  LASTPAGE_SET,
   CHARACTERS_ERROR,
   FILTER_GENDER,
   FILTER_CULTURE,
@@ -16,6 +17,7 @@ const CharacterState = (props) => {
     isLoading: false,
     error: null,
     characters: null,
+    lastPage: null,
     filtered: null,
   };
   const [state, dispatch] = useReducer(characterReducer, initialState);
@@ -27,6 +29,14 @@ const CharacterState = (props) => {
     fetch(`${API_URL}?page=${queryPage}&pageSize=${queryPageSize}`)
       .then((response) => {
         if (response.ok) {
+          const headerData = response.headers
+            .get('link')
+            .split(',')
+            .find((entry) => entry.includes('last'));
+          const regex = new RegExp(/\?page=\d{1,}/, 'gi');
+          const lastPage = +headerData.match(regex)[0].replace('?page=', '');
+
+          dispatch({ type: LASTPAGE_SET, payload: lastPage });
           return response.json();
         } else {
           throw new Error(response.statusText);
@@ -54,6 +64,7 @@ const CharacterState = (props) => {
     isLoading: state.isLoading,
     error: state.error,
     characters: state.characters,
+    lastPage: state.lastPage,
     filtered: state.filtered,
     getCharacters,
     filterByGender,

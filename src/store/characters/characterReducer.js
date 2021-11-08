@@ -2,6 +2,7 @@ import {
   START_LOADING,
   CLEAR_ERRORS,
   CHARACTERS_LOADED,
+  LASTPAGE_SET,
   CHARACTERS_ERROR,
   FILTER_GENDER,
   FILTER_CULTURE,
@@ -26,6 +27,11 @@ const _ = (state, action) => {
         error: null,
         characters: action.payload,
         filtered: null,
+      };
+    case LASTPAGE_SET:
+      return {
+        ...state,
+        lastPage: action.payload,
       };
     case CHARACTERS_ERROR:
       return {
