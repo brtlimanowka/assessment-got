@@ -10,21 +10,32 @@ const CharactersStyled = styled.div`
     margin: 20px 0;
   }
   div.characters-table {
-    width: 80%;
+    width: 90%;
     header {
       display: flex;
       justify-content: space-evenly;
       span {
-        flex-basis: 20%;
-        font-size: 1.8rem;
+        flex-basis: 18%;
+        text-align: center;
+        font-size: 2rem;
       }
     }
     div.characters-item {
       display: flex;
       justify-content: space-evenly;
+      align-items: center;
       span {
-        flex-basis: 20%;
+        flex-basis: 18%;
+        margin: 5px 0;
+        line-height: 1.4rem;
         font-size: 1.4rem;
+        text-align: justify;
+        a {
+          display: block;
+          text-decoration: none;
+          font-size: inherit;
+          color: inherit;
+        }
       }
     }
   }
