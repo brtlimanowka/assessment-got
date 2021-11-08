@@ -10,16 +10,23 @@ const CharactersItem = ({ character }) => {
 
     if (born && died) {
       const regex = new RegExp(/\d{1,}\s[A|B]/, 'gi');
-      const yearOfBirth = born
-        .match(regex)[0]
-        .replace(' ', '')
-        .replace('A', '')
-        .replace('B', '');
-      const yearOfDeath = died
-        .match(regex)[0]
-        .replace(' ', '')
-        .replace('A', '')
-        .replace('B', '');
+      let yearOfBirth = null,
+        yearOfDeath = null;
+      if (born.match(regex)) {
+        yearOfBirth = born
+          .match(regex)[0]
+          .replace(' ', '')
+          .replace('A', '')
+          .replace('B', '');
+      } else return 'Unknown';
+      if (died.match(regex)) {
+        yearOfDeath = died
+          .match(regex)[0]
+          .replace(' ', '')
+          .replace('A', '')
+          .replace('B', '');
+      } else return 'Unknown';
+
       return `No, died at ${yearOfDeath - yearOfBirth} years old`;
     }
     if (!born && !died) {
