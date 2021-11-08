@@ -35,9 +35,9 @@ const CharactersItem = ({ character }) => {
     const { allegiances } = character;
     if (allegiances.length) {
       const API_URL = 'https://www.anapioficeandfire.com/api/houses/';
-      return allegiances
-        .map((allegiance) => allegiance.replace(API_URL, ''))
-        .join(', ');
+      return allegiances.map((allegiance) => (
+        <a href={allegiance}>{allegiance.replace(API_URL, '')}</a>
+      ));
     }
     return 'No allegiances';
   };
