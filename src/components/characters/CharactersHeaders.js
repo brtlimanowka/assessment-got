@@ -33,6 +33,13 @@ const CharactersHeaders = () => {
       filterByGender(filteringGender);
     }
   };
+  const cultureFilterClearHandler = () => {
+    clearFilters();
+    setFilteringCulture(null);
+    if (filteringGender) {
+      filterByGender(filteringGender);
+    }
+  };
 
   return (
     <header>
@@ -51,12 +58,16 @@ const CharactersHeaders = () => {
       <span>
         Culture
         <div className='filter-culture'>
-          <input id='culture' type='text' onChange={cultureTypeHandler} />
+          <input
+            id='culture'
+            type='text'
+            onChange={cultureTypeHandler}
+            value={filteringCulture ? filteringCulture : ''}
+          />
           <label htmlFor='culture'>
             <i
-              className={
-                filteringCulture ? 'fas fa-times' : 'fas fa-search'
-              }></i>
+              className={filteringCulture ? 'fas fa-times' : 'fas fa-search'}
+              onClick={filteringCulture ? cultureFilterClearHandler : null}></i>
           </label>
         </div>
       </span>
