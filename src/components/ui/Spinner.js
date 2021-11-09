@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
 `;
 const Dot = styled.div`
-  background-color: #f17104;
+  background-color: ${(props) => props.theme.colors.highlight};
   height: 30px;
   width: 30px;
   margin: 0 25px;
