@@ -157,6 +157,8 @@ const CharactersStyled = styled.div`
       justify-content: space-evenly;
       align-items: center;
       color: ${(props) => props.theme.colors.tableFont};
+      animation: fadein linear 0.2s;
+      transform-origin: left;
       span {
         flex-basis: 18%;
         margin: 5px 0;
@@ -173,6 +175,20 @@ const CharactersStyled = styled.div`
             bottom: 2px;
             margin-right: 10px;
           }
+        }
+      }
+      @keyframes fadein {
+        0% {
+          opacity: 0;
+          transform: scaleX(0%);
+        }
+        50% {
+          opacity: 0.1;
+          transform: scaleX(70%);
+        }
+        100% {
+          opacity: 1;
+          transform: scaleX(100%);
         }
       }
     }
