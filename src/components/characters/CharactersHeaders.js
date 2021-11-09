@@ -2,43 +2,30 @@ import React, { useContext, useState } from 'react';
 import characterContext from '../../store/characters/characterContext';
 
 const CharactersHeaders = () => {
-  const { filterByGender, filterByCulture, clearFilters } =
-    useContext(characterContext);
-  const [filteringGender, setFilteringGender] = useState(null);
+  const { setGender, setCulture } = useContext(characterContext);
   const [filteringCulture, setFilteringCulture] = useState(null);
 
   const genderSelectHandler = (event) => {
     const selectedValue = event.target.value;
-    clearFilters();
     if (selectedValue === 'Any') {
-      setFilteringGender(null);
+      setGender(null);
     } else {
-      filterByGender(selectedValue);
-      setFilteringGender(selectedValue);
-    }
-    if (filteringCulture) {
-      filterByCulture(filteringCulture);
+      setGender(selectedValue);
     }
   };
   const cultureTypeHandler = (event) => {
     const enteredValue = event.target.value;
     if (enteredValue) {
-      filterByCulture(enteredValue);
       setFilteringCulture(enteredValue);
+      setCulture(enteredValue);
     } else {
-      clearFilters();
       setFilteringCulture(null);
-    }
-    if (filteringGender) {
-      filterByGender(filteringGender);
+      setCulture(null);
     }
   };
   const cultureFilterClearHandler = () => {
-    clearFilters();
     setFilteringCulture(null);
-    if (filteringGender) {
-      filterByGender(filteringGender);
-    }
+    setCulture(null);
   };
 
   return (
