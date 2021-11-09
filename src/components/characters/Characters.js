@@ -1,12 +1,8 @@
 import React, { useContext, useState, useEffect, Fragment } from 'react';
-import styled from 'styled-components';
 import characterContext from '../../store/characters/characterContext';
 import CharactersItem from './CharactersItem';
 import Spinner from '../ui/Spinner';
 import CharactersStyled from '../styles/Characters.styled';
-
-const FilterGender = styled.div``;
-const FilterCulture = styled.div``;
 
 const Characters = () => {
   const {
@@ -19,6 +15,7 @@ const Characters = () => {
   } = useContext(characterContext);
   const [pageSize, setPageSize] = useState(10);
   const [showSettings, setShowSettings] = useState(false);
+  const [filteringCulture, setFilteringCulture] = useState(false);
   useEffect(() => {
     startLoading();
     getCharacters();
@@ -111,19 +108,25 @@ const Characters = () => {
           <span>Alive</span>
           <span>
             Gender
-            <FilterGender>
+            <div className='filter-gender'>
               <select defaultValue='Any'>
                 <option value='Any'>Any</option>
                 <option value='Female'>Female</option>
                 <option value='Male'>Male</option>
               </select>
-            </FilterGender>
+            </div>
           </span>
           <span>
             Culture
-            <FilterCulture>
-              <input type='text' />
-            </FilterCulture>
+            <div className='filter-culture'>
+              <input id='culture' type='text' />
+              <label htmlFor='culture'>
+                <i
+                  className={
+                    filteringCulture ? 'fas fa-times' : 'fas fa-search'
+                  }></i>
+              </label>
+            </div>
           </span>
           <span>Allegiances</span>
         </header>

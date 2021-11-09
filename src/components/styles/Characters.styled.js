@@ -60,6 +60,26 @@ const CharactersStyled = styled.div`
         font-size: 2rem;
       }
     }
+    div.filter-gender select {
+      width: 100px;
+      font-size: 1.2rem;
+      option {
+        font-size: 1.2rem;
+      }
+    }
+    div.filter-culture {
+      input {
+        font-size: 1.2rem;
+        width: 150px;
+      }
+      label i {
+        position: relative;
+        width: 20px;
+        text-align: center;
+        font-size: 1.4rem;
+        top: 1px;
+      }
+    }
     div.characters-item {
       display: flex;
       justify-content: space-evenly;
