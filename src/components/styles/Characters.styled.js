@@ -98,8 +98,11 @@ const CharactersStyled = styled.div`
     border-radius: 20px;
     width: 90%;
     header {
+      color: ${(props) => props.theme.colors.font};
       display: flex;
       justify-content: space-evenly;
+      padding-bottom: 5px;
+      border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
       span {
         display: flex;
         align-items: center;
@@ -109,16 +112,33 @@ const CharactersStyled = styled.div`
       }
     }
     div.filter-gender select {
-      width: 100px;
+      width: 150px;
+      height: 22px;
+      background: ${(props) => props.theme.colors.primaryBackground};
+      color: ${(props) => props.theme.colors.font};
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      padding-left: 3px;
       font-size: 1.2rem;
+      &:hover {
+        cursor: pointer;
+      }
       option {
         font-size: 1.2rem;
       }
     }
     div.filter-culture {
       input {
+        width: 145px;
+        height: 22px;
+        background: ${(props) => props.theme.colors.primaryBackground};
+        color: ${(props) => props.theme.colors.font};
+        border: none;
+        border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
+        outline: none;
+        padding-left: 5px;
         font-size: 1.2rem;
-        width: 150px;
       }
       label i {
         position: relative;
@@ -130,12 +150,12 @@ const CharactersStyled = styled.div`
     }
     div.characters-item {
       display: flex;
+      height: 50px;
       justify-content: space-evenly;
       align-items: center;
       span {
         flex-basis: 18%;
         margin: 5px 0;
-        line-height: 1.4rem;
         font-size: 1.4rem;
         text-align: justify;
         a {

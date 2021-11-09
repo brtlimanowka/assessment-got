@@ -48,6 +48,7 @@ const CharactersHeaders = () => {
           <input
             id='culture'
             type='text'
+            placeholder='. . .'
             onChange={cultureTypeHandler}
             value={filteringCulture ? filteringCulture : ''}
           />
