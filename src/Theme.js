@@ -4,8 +4,10 @@ import { ThemeProvider } from 'styled-components';
 const theme = {
   colors: {
     primaryBackground: '#222266',
-    secondaryBackground: '#222288',
-    headerBackground: '#d6d6f5',
+    secondaryBackground: '#3939ac',
+    highlight: '#5353c6',
+    disabled: '#202060',
+    font: '#fafafa',
   },
 };
 

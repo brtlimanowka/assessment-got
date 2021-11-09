@@ -59,15 +59,24 @@ const CharactersStyled = styled.div`
     }
     div.pagination-settings {
       position: absolute;
-      top: 100px;
-      height: 120px;
+      top: 120px;
+      height: 140px;
+      width: 160px;
+      padding: 3px;
+      background: ${(props) => props.theme.colors.secondaryBackground};
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+      color: ${(props) => props.theme.colors.font};
+      border-radius: 3px;
       display: flex;
       flex-direction: column;
       h4,
       label {
+        text-align: center;
+        padding: 3px 0;
         font-size: 1.4rem;
       }
       ul {
+        background: ${(props) => props.theme.colors.primaryBackground};
         display: flex;
         height: 100%;
         flex-direction: column;
@@ -77,6 +86,9 @@ const CharactersStyled = styled.div`
           display: flex;
           justify-content: space-between;
           margin: 5px 25px;
+          input {
+            border: none;
+          }
         }
       }
     }

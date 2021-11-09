@@ -18,7 +18,7 @@ const CharactersPagination = () => {
 
   const renderSettings = (
     <div className='pagination-settings'>
-      <h4>Characters per page:</h4>
+      <h4>Characters per page</h4>
       <ul>
         <li>
           <input
