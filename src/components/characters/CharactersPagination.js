@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import characterContext from '../../store/characters/characterContext';
+import Button from '../ui/Button';
 
 const CharactersPagination = () => {
   const { getCharacters, pagination } = useContext(characterContext);
@@ -58,37 +59,37 @@ const CharactersPagination = () => {
   return (
     pagination && (
       <div className='characters-pagination'>
-        <button
+        <Button
           disabled={!pagination.prev}
           onClick={() => getCharacters(pagination.first, pageSize)}
           title='Jump to first page'>
           <i className='fas fa-fast-backward'></i>
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={!pagination.prev}
           onClick={() => getCharacters(pagination.prev, pageSize)}
           title='Jump to previous page'>
           <i className='fas fa-step-backward'></i>
-        </button>
-        <button
+        </Button>
+        <Button
           title='Display options'
           onClick={() => setShowSettings(!showSettings)}>
           <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
           <span>{pageSize}</span>
-        </button>
+        </Button>
         {showSettings && renderSettings}
-        <button
+        <Button
           disabled={!pagination.next}
           onClick={() => getCharacters(pagination.next, pageSize)}
           title='Jump to next page'>
           <i className='fas fa-step-forward'></i>
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={!pagination.next}
           onClick={() => getCharacters(pagination.last, pageSize)}
           title='Jump to last page'>
           <i className='fas fa-fast-forward'></i>
-        </button>
+        </Button>
       </div>
     )
   );
