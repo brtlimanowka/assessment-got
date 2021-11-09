@@ -3,10 +3,14 @@ import characterContext from '../../store/characters/characterContext';
 
 const CharactersPagination = () => {
   const { getCharacters, pagination } = useContext(characterContext);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(50);
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
+    setPageSize(+localStorage.getItem('page size'));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('page size', pageSize);
     getCharacters(1, pageSize);
     setShowSettings(false);
     // eslint-disable-next-line
