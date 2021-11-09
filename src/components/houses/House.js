@@ -13,9 +13,9 @@ const House = () => {
     getHouse(id);
     // eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    console.log(house);
-  }, [house]);
+
+  const renderIconTrue = <i className='far fa-check-square'></i>;
+  const renderIconFalse = <i className='far fa-times-circle'></i>;
 
   return (
     <HouseStyled>
@@ -31,35 +31,36 @@ const House = () => {
           <article>
             <ul>
               <li>
-                <span>Region:</span>
+                <label>Region:</label>
                 <span>{house.region}</span>
               </li>
               <li>
-                <span>Coat of Arms:</span>
+                <label>Coat of Arms:</label>
                 <span>{house.coatOfArms}</span>
               </li>
               <li>
-                <span>Titles:</span>
+                <label>Titles:</label>
                 <span>{house.titles.join(', ')}</span>
               </li>
               <li>
-                <span>Seats:</span>
+                <label>Seats:</label>
                 <span>{house.seats.join(', ')}</span>
               </li>
               <li>
-                <span>Has died out:</span>
-                <span>{house.diedOut ? 'Yes' : 'No'}</span>
+                <label>Has died out:</label>
+                <span>{house.diedOut ? renderIconTrue : renderIconFalse}</span>
               </li>
               <li>
-                <span>Has overlord:</span>
-                <span>{house.overlord ? 'Yes' : 'No'}</span>
+                <label>Has overlord:</label>
+                <span>{house.overlord ? renderIconTrue : renderIconFalse}</span>
               </li>
               <li>
-                <span>Cadet branches:</span>
+                <label>Cadet branches:</label>
                 <span>{house.cadetBranches.length}</span>
               </li>
             </ul>
           </article>
+          <button onClick={() => history.goBack()}>Back</button>
         </div>
       )}
     </HouseStyled>
