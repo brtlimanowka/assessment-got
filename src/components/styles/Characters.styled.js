@@ -1,11 +1,23 @@
 import styled from 'styled-components';
 
 const CharactersStyled = styled.div`
-  height: 100%;
+  background: linear-gradient(
+    to bottom right,
+    ${(props) => props.theme.colors.primaryBackground},
+    ${(props) => props.theme.colors.secondaryBackground}
+  );
+  height: calc(100% - 50px);
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
   h1 {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: ${(props) => props.theme.colors.headerBackground};
+    text-align: center;
     font-size: 2.6rem;
     line-height: 2.6rem;
     margin-top: 20px;
@@ -53,6 +65,10 @@ const CharactersStyled = styled.div`
     }
   }
   div.characters-table {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 10px 3px 6px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 20px;
     width: 90%;
     header {
       display: flex;
