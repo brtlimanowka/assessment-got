@@ -1,8 +1,19 @@
 import React, { useContext, useEffect } from 'react';
+import styled from 'styled-components';
 import houseContext from '../../store/houses/houseContext';
 import { useParams, useHistory } from 'react-router-dom';
 import HouseStyled from '../styles/House.styled';
 import Spinner from '../ui/Spinner';
+import Button from '../ui/Button';
+
+const BackButton = styled(Button)`
+  flex-basis: unset;
+  align-self: center;
+  width: 20%;
+  height: 30px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+`;
 
 const House = () => {
   const { startLoading, isLoading, house, getHouse } = useContext(houseContext);
@@ -13,9 +24,6 @@ const House = () => {
     getHouse(id);
     // eslint-disable-next-line
   }, []);
-
-  const renderIconTrue = <i className='far fa-check-square'></i>;
-  const renderIconFalse = <i className='far fa-times-circle'></i>;
 
   return (
     <HouseStyled>
@@ -48,11 +56,11 @@ const House = () => {
               </li>
               <li>
                 <label>Has died out:</label>
-                <span>{house.diedOut ? renderIconTrue : renderIconFalse}</span>
+                <span>{house.diedOut ? 'Yes' : 'No'}</span>
               </li>
               <li>
                 <label>Has overlord:</label>
-                <span>{house.overlord ? renderIconTrue : renderIconFalse}</span>
+                <span>{house.overlord ? 'Yes' : 'No'}</span>
               </li>
               <li>
                 <label>Cadet branches:</label>
@@ -60,7 +68,7 @@ const House = () => {
               </li>
             </ul>
           </article>
-          <button onClick={() => history.goBack()}>Back</button>
+          <BackButton onClick={() => history.goBack()}>Back</BackButton>
         </div>
       )}
     </HouseStyled>
