@@ -26,43 +26,41 @@ const Characters = () => {
   }, []);
   useEffect(() => {
     getCharacters(1, pageSize);
+    setShowSettings(false);
     // eslint-disable-next-line
   }, [pageSize]);
-
-  const pageSizeChangeHandler = (value) => {
-    startLoading();
-    setPageSize(value);
-    setShowSettings(false);
-  };
 
   const renderSettings = (
     <div className='pagination-settings'>
       <h4>Characters per page:</h4>
       <ul>
-        <li onClick={() => pageSizeChangeHandler(10)}>
+        <li>
           <input
             type='radio'
             name='pageSize'
             value='10'
             checked={pageSize === 10}
+            onChange={() => setPageSize(10)}
           />
           <label htmlFor='radio10'>10</label>
         </li>
-        <li onClick={() => pageSizeChangeHandler(25)}>
+        <li>
           <input
             type='radio'
             name='pageSize'
             value='25'
             checked={pageSize === 25}
+            onChange={() => setPageSize(25)}
           />
           <label htmlFor='radio25'>25</label>
         </li>
-        <li onClick={() => pageSizeChangeHandler(52)}>
+        <li>
           <input
             type='radio'
             name='pageSize'
             value='50'
             checked={pageSize === 50}
+            onChange={() => setPageSize(50)}
           />
           <label htmlFor='radio50'>50</label>
         </li>

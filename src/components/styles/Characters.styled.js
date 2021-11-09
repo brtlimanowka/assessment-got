@@ -43,9 +43,6 @@ const CharactersStyled = styled.div`
           display: flex;
           justify-content: space-between;
           margin: 5px 25px;
-          &:hover {
-            cursor: pointer;
-          }
         }
       }
     }
