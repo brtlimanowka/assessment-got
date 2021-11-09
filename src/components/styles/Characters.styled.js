@@ -26,13 +26,26 @@ const CharactersStyled = styled.div`
     div.pagination-settings {
       position: absolute;
       top: 100px;
+      height: 120px;
       display: flex;
       flex-direction: column;
+      h4,
+      label {
+        font-size: 1.4rem;
+      }
       ul {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
         list-style: none;
         li {
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
+          margin: 5px 25px;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
