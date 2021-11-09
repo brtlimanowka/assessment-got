@@ -102,7 +102,7 @@ const CharactersStyled = styled.div`
           color: inherit;
           i {
             position: relative;
-            bottom: 1px;
+            bottom: 2px;
             margin-right: 10px;
           }
         }

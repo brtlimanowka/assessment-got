@@ -7,6 +7,8 @@ import {
   CHARACTERS_LOADED,
   STORE_PAGINATION,
   CHARACTERS_ERROR,
+  SELECT_GENDER,
+  SELECT_CULTURE,
   FILTER_GENDER,
   FILTER_CULTURE,
   CLEAR_FILTER,
@@ -19,6 +21,8 @@ const CharacterState = (props) => {
     error: null,
     characters: null,
     pagination: null,
+    gender: null,
+    culture: null,
     filtered: null,
   };
   const [state, dispatch] = useReducer(characterReducer, initialState);
@@ -40,6 +44,11 @@ const CharacterState = (props) => {
       .catch((error) => {
         dispatch({ type: CHARACTERS_ERROR, payload: error.message });
       });
+  };
+  const setGender = (gender) =>
+    dispatch({ type: SELECT_GENDER, payload: gender });
+  const setCulture = (culture) => {
+    dispatch({ type: SELECT_CULTURE, payload: culture });
   };
   const filterByGender = (gender) => {
     dispatch({ type: FILTER_GENDER, payload: gender });
@@ -87,8 +96,12 @@ const CharacterState = (props) => {
     error: state.error,
     characters: state.characters,
     pagination: state.pagination,
+    gender: state.gender,
+    culture: state.culture,
     filtered: state.filtered,
     getCharacters,
+    setGender,
+    setCulture,
     filterByGender,
     filterByCulture,
     clearFilters,

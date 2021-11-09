@@ -4,6 +4,8 @@ import {
   CHARACTERS_LOADED,
   STORE_PAGINATION,
   CHARACTERS_ERROR,
+  SELECT_GENDER,
+  SELECT_CULTURE,
   FILTER_GENDER,
   FILTER_CULTURE,
   CLEAR_FILTER,
@@ -41,6 +43,16 @@ const _ = (state, action) => {
         error: action.payload,
         characters: null,
         filtered: null,
+      };
+    case SELECT_GENDER:
+      return {
+        ...state,
+        gender: action.payload,
+      };
+    case SELECT_CULTURE:
+      return {
+        ...state,
+        culture: action.payload,
       };
     case FILTER_GENDER:
       return {
