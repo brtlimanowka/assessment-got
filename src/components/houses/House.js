@@ -48,7 +48,11 @@ const House = () => {
               </li>
               <li>
                 <label>Titles:</label>
-                <span>{house.titles.join(', ')}</span>
+                <span>
+                  {house.titles.map((title, index) => (
+                    <div key={index}>{title}</div>
+                  ))}
+                </span>
               </li>
               <li>
                 <label>Seats:</label>
