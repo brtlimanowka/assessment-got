@@ -6,6 +6,7 @@ import {
   CHARACTERS_ERROR,
   FILTER_GENDER,
   FILTER_CULTURE,
+  CLEAR_FILTER,
 } from '../types';
 
 const _ = (state, action) => {
@@ -55,6 +56,11 @@ const _ = (state, action) => {
           const regex = new RegExp(action.payload, 'gi');
           return character.culture.match(regex);
         }),
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
       };
     default:
       return state;

@@ -9,6 +9,7 @@ import {
   CHARACTERS_ERROR,
   FILTER_GENDER,
   FILTER_CULTURE,
+  CLEAR_FILTER,
 } from '../types';
 const API_URL = 'https://www.anapioficeandfire.com/api/characters';
 
@@ -45,6 +46,9 @@ const CharacterState = (props) => {
   };
   const filterByCulture = (culture) => {
     dispatch({ type: FILTER_CULTURE, payload: culture });
+  };
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTER });
   };
   const startLoading = () => {
     dispatch({ type: START_LOADING });
@@ -87,6 +91,7 @@ const CharacterState = (props) => {
     getCharacters,
     filterByGender,
     filterByCulture,
+    clearFilters,
     startLoading,
     clearErrors,
   };
