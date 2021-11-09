@@ -3,11 +3,12 @@ import characterContext from '../../store/characters/characterContext';
 
 const CharactersPagination = () => {
   const { getCharacters, pagination } = useContext(characterContext);
-  const [pageSize, setPageSize] = useState(50);
+  const [pageSize, setPageSize] = useState(10);
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
-    setPageSize(+localStorage.getItem('page size'));
+    const localPageSize = +localStorage.getItem('page size');
+    setPageSize(localPageSize ? localPageSize : 10);
   }, []);
   useEffect(() => {
     localStorage.setItem('page size', pageSize);
