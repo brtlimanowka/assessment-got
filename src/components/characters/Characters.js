@@ -39,33 +39,30 @@ const Characters = () => {
     <div className='pagination-settings'>
       <h4>Characters per page:</h4>
       <ul>
-        <li>
+        <li onClick={() => pageSizeChangeHandler(10)}>
           <input
             type='radio'
             name='pageSize'
             value='10'
             checked={pageSize === 10}
-            onChange={() => pageSizeChangeHandler(10)}
           />
           <label htmlFor='radio10'>10</label>
         </li>
-        <li>
+        <li onClick={() => pageSizeChangeHandler(25)}>
           <input
             type='radio'
             name='pageSize'
             value='25'
             checked={pageSize === 25}
-            onChange={() => pageSizeChangeHandler(25)}
           />
           <label htmlFor='radio25'>25</label>
         </li>
-        <li>
+        <li onClick={() => pageSizeChangeHandler(52)}>
           <input
             type='radio'
             name='pageSize'
             value='50'
             checked={pageSize === 50}
-            onChange={() => pageSizeChangeHandler(50)}
           />
           <label htmlFor='radio50'>50</label>
         </li>
