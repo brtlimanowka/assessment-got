@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
 const CharactersStyled = styled.div`
-  background: linear-gradient(
-    to bottom right,
-    ${(props) => props.theme.colors.primaryBackground},
-    ${(props) => props.theme.colors.secondaryBackground}
-  );
+  background: ${(props) => props.theme.colors.primaryBackground};
   height: calc(100% - 50px);
   padding-bottom: 50px;
   display: flex;
@@ -13,14 +9,15 @@ const CharactersStyled = styled.div`
   align-items: center;
   overflow-y: auto;
   h1 {
-    width: 90%;
+    width: 50%;
     padding: 10px;
-    border-radius: 10px;
-    background-color: ${(props) => props.theme.colors.headerBackground};
     text-align: center;
-    font-size: 2.6rem;
-    line-height: 2.6rem;
+    color: ${(props) => props.theme.colors.font};
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+    font-size: 2.8rem;
     margin-top: 20px;
+    border-bottom: 1px solid ${(props) => props.theme.colors.font};
+    box-shadow: 0 1px 0 black;
   }
   div.characters-pagination {
     width: 40%;
@@ -32,7 +29,27 @@ const CharactersStyled = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      border: none;
+      color: ${(props) => props.theme.colors.font};
+      background: ${(props) => props.theme.colors.secondaryBackground};
+      border-radius: 5px;
       cursor: pointer;
+      &:disabled {
+        cursor: not-allowed;
+        color: ${(props) => props.theme.colors.secondaryBackground};
+        background: ${(props) => props.theme.colors.disabled};
+        &:hover {
+          cursor: not-allowed;
+          color: ${(props) => props.theme.colors.secondaryBackground};
+          background: ${(props) => props.theme.colors.disabled};
+        }
+      }
+      &:hover {
+        background: ${(props) => props.theme.colors.highlight};
+      }
+      &:active {
+        background: ${(props) => props.theme.colors.secondaryBackground};
+      }
       * {
         font-size: 1.4rem;
       }
@@ -65,8 +82,6 @@ const CharactersStyled = styled.div`
     }
   }
   div.characters-table {
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 10px 3px 6px rgba(0, 0, 0, 0.2);
     padding: 10px;
     border-radius: 20px;
     width: 90%;
