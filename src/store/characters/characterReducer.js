@@ -45,17 +45,26 @@ const _ = (state, action) => {
     case FILTER_GENDER:
       return {
         ...state,
-        filtered: state.characters.filter(
-          (character) => character.gender === action.payload
-        ),
+        filtered: state.filtered
+          ? state.filtered.filter(
+              (character) => character.gender === action.payload
+            )
+          : state.characters.filter(
+              (character) => character.gender === action.payload
+            ),
       };
     case FILTER_CULTURE:
       return {
         ...state,
-        filtered: state.characters.filter((character) => {
-          const regex = new RegExp(action.payload, 'gi');
-          return character.culture.match(regex);
-        }),
+        filtered: state.filtered
+          ? state.filtered.filter((character) => {
+              const regex = new RegExp(action.payload, 'gi');
+              return character.culture.match(regex);
+            })
+          : state.characters.filter((character) => {
+              const regex = new RegExp(action.payload, 'gi');
+              return character.culture.match(regex);
+            }),
       };
     case CLEAR_FILTER:
       return {
