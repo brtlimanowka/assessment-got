@@ -17,10 +17,15 @@ const CharactersStyled = styled.div`
     margin: 20px 0;
     button {
       flex-basis: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
       cursor: pointer;
+      * {
+        font-size: 1.4rem;
+      }
       i {
         margin-top: 1px;
-        font-size: 1.4rem;
       }
     }
     div.pagination-settings {

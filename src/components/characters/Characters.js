@@ -82,6 +82,7 @@ const Characters = () => {
         title='Display options'
         onClick={() => setShowSettings(!showSettings)}>
         <i className='fas fa-bars' style={{ fontSize: '1.8rem' }}></i>
+        <span>{pageSize}</span>
       </button>
       {showSettings && renderSettings}
       <button
