@@ -4,7 +4,9 @@ import CharactersHeaders from './CharactersHeaders';
 import CharactersItem from './CharactersItem';
 
 const CharactersTable = () => {
-  const { characters } = useContext(characterContext);
+  const { characters, filtered } = useContext(characterContext);
+
+  const selectedCharacters = filtered || characters;
 
   return (
     <div className='characters-table'>
@@ -12,7 +14,7 @@ const CharactersTable = () => {
       <article>
         {characters && (
           <ul>
-            {characters.map((character) => (
+            {selectedCharacters.map((character) => (
               <CharactersItem key={character.url} character={character} />
             ))}
           </ul>
