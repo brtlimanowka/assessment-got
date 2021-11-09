@@ -8,6 +8,8 @@ const theme = {
     highlight: '#5353c6',
     disabled: '#202060',
     font: '#fafafa',
+    tablePrimary: '#202060',
+    tableFont: '#d9d9f2',
   },
 };
 

@@ -149,10 +149,14 @@ const CharactersStyled = styled.div`
       }
     }
     div.characters-item {
+      &:nth-child(even) {
+        background: ${(props) => props.theme.colors.tablePrimary};
+      }
       display: flex;
       height: 50px;
       justify-content: space-evenly;
       align-items: center;
+      color: ${(props) => props.theme.colors.tableFont};
       span {
         flex-basis: 18%;
         margin: 5px 0;
@@ -164,6 +168,7 @@ const CharactersStyled = styled.div`
           font-size: inherit;
           color: inherit;
           i {
+            color: ${(props) => props.theme.colors.highlight};
             position: relative;
             bottom: 2px;
             margin-right: 10px;
