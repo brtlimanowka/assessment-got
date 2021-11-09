@@ -29,7 +29,7 @@ const Characters = () => {
     // eslint-disable-next-line
   }, [pageSize]);
 
-  const pageSizeClickHandler = (value) => {
+  const pageSizeChangeHandler = (value) => {
     startLoading();
     setPageSize(value);
     setShowSettings(false);
@@ -38,9 +38,38 @@ const Characters = () => {
   const renderSettings = (
     <div className='pagination-settings'>
       <h4>Characters per page:</h4>
-      <button onClick={() => pageSizeClickHandler(10)}>10</button>
-      <button onClick={() => pageSizeClickHandler(25)}>25</button>
-      <button onClick={() => pageSizeClickHandler(50)}>50</button>
+      <ul>
+        <li>
+          <input
+            type='radio'
+            name='pageSize'
+            value='10'
+            checked={pageSize === 10}
+            onChange={() => pageSizeChangeHandler(10)}
+          />
+          <label htmlFor='radio10'>10</label>
+        </li>
+        <li>
+          <input
+            type='radio'
+            name='pageSize'
+            value='25'
+            checked={pageSize === 25}
+            onChange={() => pageSizeChangeHandler(25)}
+          />
+          <label htmlFor='radio25'>25</label>
+        </li>
+        <li>
+          <input
+            type='radio'
+            name='pageSize'
+            value='50'
+            checked={pageSize === 50}
+            onChange={() => pageSizeChangeHandler(50)}
+          />
+          <label htmlFor='radio50'>50</label>
+        </li>
+      </ul>
     </div>
   );
   const renderPagination = pagination && (
@@ -113,7 +142,6 @@ const Characters = () => {
           )}
         </article>
       </div>
-      {!isLoading && pageSize > 10 && renderPagination}
     </Fragment>
   );
 

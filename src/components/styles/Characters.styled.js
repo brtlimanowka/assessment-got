@@ -28,6 +28,13 @@ const CharactersStyled = styled.div`
       top: 100px;
       display: flex;
       flex-direction: column;
+      ul {
+        list-style: none;
+        li {
+          display: flex;
+          justify-content: space-around;
+        }
+      }
     }
   }
   div.characters-table {
