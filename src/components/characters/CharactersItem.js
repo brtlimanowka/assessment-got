@@ -42,12 +42,18 @@ const CharactersItem = ({ character }) => {
     const { allegiances } = character;
     if (allegiances.length) {
       const API_URL = 'https://www.anapioficeandfire.com/api/houses/';
-      return allegiances.map((allegiance) => (
-        <a key={allegiance} href={allegiance} title='Check House'>
-          <i className='fas fa-external-link-alt'></i>
-          <span>{allegiance.replace(API_URL, '')}</span>
-        </a>
-      ));
+      return allegiances.map((allegiance) => {
+        const allegianceId = allegiance.replace(API_URL, '');
+        return (
+          <a
+            key={allegiance}
+            href={`/house/${allegianceId}`}
+            title='Check House'>
+            <i className='fas fa-external-link-alt'></i>
+            <span>{allegianceId}</span>
+          </a>
+        );
+      });
     }
     return 'No allegiances';
   };
