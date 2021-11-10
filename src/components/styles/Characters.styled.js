@@ -78,6 +78,12 @@ const CharactersStyled = styled.div`
         font-size: 2rem;
       }
     }
+    span.total-pages {
+      margin-top: 10px;
+      float: right;
+      font-size: 1.2rem;
+      color: ${(props) => props.theme.colors.highlight};
+    }
     div.filter-gender select {
       width: 150px;
       height: 22px;

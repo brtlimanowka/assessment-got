@@ -12,6 +12,7 @@ const CharactersTable = () => {
     filterByCulture,
     filtered,
     clearFilters,
+    pagination,
   } = useContext(characterContext);
   useEffect(() => {
     clearFilters();
@@ -20,6 +21,9 @@ const CharactersTable = () => {
     // eslint-disable-next-line
   }, [characters, gender, culture]);
 
+  const currentPage = pagination.prev
+    ? pagination.prev + 1
+    : pagination.next - 1;
   const selectedCharacters = filtered || characters;
 
   return (
@@ -34,6 +38,9 @@ const CharactersTable = () => {
           </ul>
         )}
       </article>
+      <span className='total-pages'>
+        Page {currentPage} / {pagination.last}
+      </span>
     </div>
   );
 };
