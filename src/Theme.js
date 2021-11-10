@@ -10,6 +10,7 @@ const theme = {
     font: '#fafafa',
     tablePrimary: '#202060',
     tableFont: '#d9d9f2',
+    error: '#f17104',
   },
 };
 
