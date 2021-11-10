@@ -14,7 +14,7 @@ const ErrorCard = () => {
   const closeClickHandler = () => {
     characterError && clearCharacterErrors();
     houseError && clearHouseErrors();
-    history.go('0');
+    history.goBack();
   };
 
   return (
